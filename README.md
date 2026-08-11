@@ -46,7 +46,9 @@ git clone https://github.com/zhoul1/auto-imagegen "$env:USERPROFILE\.agents\skil
 
 > auto-imagegen 画个猫 使用gemini
 
-想指定供应商或模型，直接在指令里带上；先看看本机有哪些供应商和模型：
+想指定供应商或模型，直接在指令里带上。
+
+**查看供应商和模型**
 
 > auto-imagegen 查看
 
