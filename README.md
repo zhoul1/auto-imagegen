@@ -30,45 +30,25 @@ auto-imagegen 是 **Codex 内置图片生成能力（OpenAI imagegen）的拓展
 
 **第一步：安装**
 
-直接克隆项目，或下载 ZIP 压缩包解压后把 `auto-imagegen` 文件夹放到 `~/.agents/skills/` 下：
-
 ```powershell
 git clone https://github.com/zhoul1/auto-imagegen "$env:USERPROFILE\.agents\skills\auto-imagegen"
 ```
 
-安装后 Codex 会自动识别这个 skill，之后在对话里 `@auto-imagegen` 直接说「画个…」就能用。
+（或下载 ZIP 解压到 `~/.agents/skills/auto-imagegen`）
 
 **第二步：初始化（每台机器只需一次）**
 
-在终端里运行初始化命令，脚本会自动扫描你机器上的 Codex++ 中转配置、`~/.codex/config.toml`、`~/.codex/auth.json` 和环境变量，联网探测可用的图片模型，把结果写进 `providers.json`，全程不用手动抄 Key：
+在 Codex 对话里说：
 
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" --init
-```
+> @auto-imagegen 初始化
 
 **第三步：画图**
 
-初始化完成后就可以直接画图了：
+> @auto-imagegen 画个猫 使用gemini
 
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "一只柴犬在富士山下看日落"
-```
+想指定供应商或模型，直接在指令里带上；先看看本机有哪些供应商和模型：
 
-图片生成后会自动在系统查看器中打开。也可以不敲命令，直接在 Codex 对话里说「画一只柴犬在富士山下看日落」。
-
-**想指定供应商或模型？**
-
-先看看本机有哪些可用的供应商和模型：
-
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" --inspect
-```
-
-然后生成时带上参数，比如指定 agnes 的 `agnes-image-2.1-flash` 模型，并把图片保存为 `sunset.png`：
-
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "日落" --provider agnes-ai --model agnes-image-2.1-flash --out "sunset.png"
-```
+> @auto-imagegen 查看
 
 ---
 
