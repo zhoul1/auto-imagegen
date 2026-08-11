@@ -40,15 +40,15 @@ git clone https://github.com/zhoul1/auto-imagegen "$env:USERPROFILE\.agents\skil
 
 在 Codex 对话里说：
 
-> @auto-imagegen 初始化
+> auto-imagegen 初始化
 
 **第三步：画图**
 
-> @auto-imagegen 画个猫 使用gemini
+> auto-imagegen 画个猫 使用gemini
 
 想指定供应商或模型，直接在指令里带上；先看看本机有哪些供应商和模型：
 
-> @auto-imagegen 查看
+> auto-imagegen 查看
 
 ---
 
