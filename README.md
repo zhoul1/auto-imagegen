@@ -54,6 +54,16 @@ python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "日
 
 ---
 
+## 🔄 使用流程
+
+**安装后必须先初始化。** 第一次使用前一定要跑一次 `--init`——它负责扫描本机可用的图片供应商、探测可用模型并生成 `providers.json`。不初始化直接画图会报错，因为脚本还没有任何供应商配置可用。
+
+初始化完成后就能正常画图了，默认使用 `providers.json` 里选好的默认供应商和模型。
+
+**修改了绘图提供商之后，再跑一次 `--init` 就行。** 比如你在 Codex++ 里新增、删除或更换了中转供应商（agnes、cliproxy 等），或者改了 `config.toml`、环境变量里的配置，重新执行 `--init` 会自动重新发现并刷新 `providers.json`；你手动设置过的默认供应商和模型会被保留，不会丢失。
+
+---
+
 ## ✨ 特性
 
 - **零硬编码**：不绑定任何厂商（OpenAI / agnes / cliproxy / DeepSeek…），URL、Key、模型、端点全部来自 `providers.json`
