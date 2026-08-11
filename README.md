@@ -22,35 +22,19 @@
 
 **第一步：安装**
 
-把 auto-imagegen 放进 Codex 的 skills 目录即可，两种方式任选：
-
-```powershell
-git clone https://github.com/zhoul1/auto-imagegen "$env:USERPROFILE\.agents\skills\auto-imagegen"
-```
-
-或者直接下载 ZIP 压缩包，解压后把 `auto-imagegen` 文件夹放到 `~/.agents/skills/` 下。安装后 Codex 会自动识别这个 skill，之后在对话里 `@auto-imagegen` 直接说「画个…」就能用。
+把 auto-imagegen 放进 Codex 的 skills 目录即可：可以直接克隆项目，也可以下载 ZIP 压缩包，解压后把 `auto-imagegen` 文件夹放到 `~/.agents/skills/` 下。安装后 Codex 会自动识别这个 skill，之后在对话里 `@auto-imagegen` 直接说「画个…」就能用。
 
 **第二步：初始化（每台机器只需一次）**
 
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" --init
-```
-
-脚本会自动扫描你机器上的 Codex++ 中转配置、`~/.codex/config.toml`、`~/.codex/auth.json` 和环境变量，联网探测哪些图片模型可用，把结果写进 `providers.json`——全程不需要手动抄任何 Key。
+在终端里运行一次初始化命令（具体命令见下方「命令速览」）。脚本会自动扫描你机器上的 Codex++ 中转配置、`~/.codex/config.toml`、`~/.codex/auth.json` 和环境变量，联网探测哪些图片模型可用，把结果写进 `providers.json`——全程不需要手动抄任何 Key。
 
 **第三步：画图**
 
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "一只柴犬在富士山下看日落"
-```
+初始化完成后就可以直接画图了：对 Codex 说「画一只柴犬在富士山下看日落」就行，也可以自己在终端里运行生成命令（见「命令速览」）。默认使用 `providers.json` 里选好的默认供应商和模型，图片生成后会自动在系统查看器中打开。
 
-默认使用 `providers.json` 里选好的默认供应商和模型，生成后图片会自动在系统查看器中打开。
+**想指定供应商或模型？**
 
-**想指定供应商或模型？** 先运行 `--inspect` 看看本机有哪些可用的供应商和模型，然后直接带上参数：
-
-```powershell
-python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "日落" --provider agnes-ai --model agnes-image-2.1-flash --out "sunset.png"
-```
+先用 `--inspect`（见「命令速览」）看看本机有哪些可用的供应商和模型，然后在生成时用参数指定，例如指定 agnes 的 `agnes-image-2.1-flash` 模型，或自定义输出文件名。
 
 ---
 
