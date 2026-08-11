@@ -4,6 +4,20 @@
 
 ---
 
+# 🎨 auto-imagegen
+
+> 专为 **Codex / Codex++** 打造的零配置绘图 skill —— 不用抄 Key、不用改代码、复制即用。
+
+---
+
+## 这是什么？
+
+auto-imagegen 是 **Codex 内置图片生成能力（OpenAI imagegen）的拓展**：它让你摆脱对 OpenAI 绘图模型的限制，**任何 OpenAI 兼容的绘图模型都可以用**——agnès、Stable Diffusion、Flux、以及各种中转聚合商提供的图片模型，全部开箱即用。画图时具体用哪个模型，由你本机的 `providers.json` 决定。
+
+**前提：安装 Codex++。** 供应商的 Key 和配置主要来自 Codex++ 的中转设置，`--init` 会自动读取，不需要手动抄写；如果你本机还有其它 Key 来源（OpenAI 登录、环境变量等），`--init` 也会一并自动发现。
+
+---
+
 ## 为什么你需要它？（痛点）
 
 | 痛点 | 常见方案的死法 | auto-imagegen 的解法 |
