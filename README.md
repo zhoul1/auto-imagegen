@@ -20,19 +20,37 @@
 
 ## 🚀 30 秒上手
 
+**第一步：安装**
+
+把 auto-imagegen 放进 Codex 的 skills 目录即可，两种方式任选：
+
 ```powershell
-# 1) 安装（二选一）
 git clone https://github.com/zhoul1/auto-imagegen "$env:USERPROFILE\.agents\skills\auto-imagegen"
-#    或下载 ZIP 解压到 ~/.agents/skills/auto-imagegen
+```
 
-# 2) 每台机器只跑一次：自动发现本机供应商并生成配置
+或者直接下载 ZIP 压缩包，解压后把 `auto-imagegen` 文件夹放到 `~/.agents/skills/` 下。安装后 Codex 会自动识别这个 skill，之后在对话里 `@auto-imagegen` 直接说「画个…」就能用。
+
+**第二步：初始化（每台机器只需一次）**
+
+```powershell
 python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" --init
+```
 
-# 3) 画图！
+脚本会自动扫描你机器上的 Codex++ 中转配置、`~/.codex/config.toml`、`~/.codex/auth.json` 和环境变量，联网探测哪些图片模型可用，把结果写进 `providers.json`——全程不需要手动抄任何 Key。
+
+**第三步：画图**
+
+```powershell
 python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "一只柴犬在富士山下看日落"
 ```
 
-也可以在 Codex 对话里 `@auto-imagegen` 直接说「画个…」，脚本自动使用 `providers.json` 里的默认供应商与模型。
+默认使用 `providers.json` 里选好的默认供应商和模型，生成后图片会自动在系统查看器中打开。
+
+**想指定供应商或模型？** 先运行 `--inspect` 看看本机有哪些可用的供应商和模型，然后直接带上参数：
+
+```powershell
+python "$env:USERPROFILE\.agents\skills\auto-imagegen\scripts\image_gen.py" "日落" --provider agnes-ai --model agnes-image-2.1-flash --out "sunset.png"
+```
 
 ---
 
